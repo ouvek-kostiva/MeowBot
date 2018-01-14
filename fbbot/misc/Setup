@@ -1,0 +1,11 @@
+sudo pip3 install flask
+
+sudo pip3 install --upgrade pip
+
+sudo pip3 install xgboost==0.6a2
+
+sudo pip3 install requests-toolbelt
+
+# RUN
+python3 res.py
+python3 rec.py

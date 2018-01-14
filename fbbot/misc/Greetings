@@ -1,0 +1,473 @@
+curl -X POST -H "Content-Type: application/json" -d '{
+  "setting_type":"greeting",
+  "greeting":{
+    "text":"哈囉~喜愛金融市場的朋友們\n感謝您加入這個聊天機器人\n\n請輸入 4 位數股票代號\n取得股價趨勢預測＆財務健檢結果\n\n現在按下「開始」或輸入任意文字"
+  }
+}' "https://graph.facebook.com/v2.6/me/thread_settings?access_token=PAT"
+
+哈囉~喜愛股票的朋友們\n感謝您加入這個聊天機器人\n\n請輸入 4 位數股票代號\n取得股價趨勢預測＆財務健檢結果\n\n現在按下「開始」或輸入任意文字
+
+down vote
+Make a POST call to API JSON body as below.
+
+curl -X POST -H "Content-Type: application/json" -d '{
+"setting_type":"call_to_actions",
+"thread_state":"new_thread",
+"call_to_actions":[
+ {
+  "payload":"*help"
+ }
+]
+}' "https://graph.facebook.com/v2.6/me/thread_settings?access_token=PAT"
+
+
+curl -X POST -H "Content-Type: application/json" -d '{
+  "persistent_menu":[{
+    "locale: "default",
+    "call_to_actions":[
+      {        
+        "type":"postback",
+        "title":"功能說明 *help",      
+        "payload":"*help"        
+      },
+      {        
+        "type":"postback",
+        "title":"登入獎勵及查詢點數 *daily",      
+        "payload":"*daily"        
+      },
+      {        
+        "type":"postback",
+        "title":"花 100 點抽寶箱 *box",      
+        "payload":"*box"        
+      }
+    ]
+  }]
+}' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=PAT"
+
+
+curl -X POST -H "Content-Type: application/json" -d '{
+"persistent_menu":[
+    {
+    "locale":"default",
+    "composer_input_disabled":false,
+    "call_to_actions":[
+        {
+        "title":"Features",
+        "type":"nested",
+        "call_to_actions":[
+            {
+            "title":"All Commands",
+            "type":"postback",
+            "payload":"*help"
+            },
+            {
+            "title":"Check Points",
+            "type":"postback",
+            "payload":"*daily"
+            },
+            {
+            "title":"Lotto for 100 Pts",
+            "type":"postback",
+            "payload":"*box"
+            },
+            {
+            "title":"5 Lotto",
+            "type":"postback",
+            "payload":"*box5"
+            },
+            {
+            "title":"20 Lotto",
+            "type":"postback",
+            "payload":"*box20"
+            }
+        ]
+        },
+        {
+        "type":"web_url",
+        "title":"Facebook Page",
+        "url":"https://www.facebook.com/meowmarkets",
+        "webview_height_ratio":"full"
+        }
+    ]
+    },
+    {
+    "locale":"zh_TW",
+    "composer_input_disabled":false,
+    "call_to_actions":[
+        {
+        "title":"快捷功能按鈕",
+        "type":"nested",
+        "call_to_actions":[
+            {
+            "title":"功能列表",
+            "type":"postback",
+            "payload":"*help"
+            },
+            {
+            "title":"查點數與登入獎勵",
+            "type":"postback",
+            "payload":"*daily"
+            },
+            {
+            "title":"100 點抽寶箱",
+            "type":"postback",
+            "payload":"*box"
+            },
+            {
+            "title":"連抽 5 寶箱",
+            "type":"postback",
+            "payload":"*box5"
+            },
+            {
+            "title":"連抽 20 寶箱",
+            "type":"postback",
+            "payload":"*box20"
+            }
+        ]
+        },
+        {
+        "type":"web_url",
+        "title":"專頁首頁",
+        "url":"https://www.facebook.com/meowmarkets",
+        "webview_height_ratio":"full"
+        }
+    ]
+    }
+]
+}' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=PAT"
+
+curl -X POST -H "Content-Type: application/json" -d '{
+"persistent_menu":[
+    {
+    "locale":"default",
+    "composer_input_disabled":false,
+    "call_to_actions":[
+        {
+        "title":"Features",
+        "type":"nested",
+        "call_to_actions":[
+            {
+            "title":"All Commands",
+            "type":"postback",
+            "payload":"*help"
+            },
+            {
+            "title":"Check Points",
+            "type":"postback",
+            "payload":"*daily"
+            },
+            {
+            "title":"Personal Finance Articles",
+            "type":"postback",
+            "payload":"*pf"
+            },
+            {
+            "title":"Lotto for 100 Pts",
+            "type":"postback",
+            "payload":"*box"
+            },
+            {
+            "title":"20 Lotto",
+            "type":"postback",
+            "payload":"*box20"
+            }
+        ]
+        },
+        {
+        "type":"web_url",
+        "title":"Facebook Page",
+        "url":"https://www.facebook.com/iatstock",
+        "webview_height_ratio":"full"
+        }
+    ]
+    },
+    {
+    "locale":"zh_TW",
+    "composer_input_disabled":false,
+    "call_to_actions":[
+        {
+        "title":"快捷功能按鈕",
+        "type":"nested",
+        "call_to_actions":[
+            {
+            "title":"功能列表",
+            "type":"postback",
+            "payload":"*help"
+            },
+            {
+            "title":"查點數與登入獎勵",
+            "type":"postback",
+            "payload":"*daily"
+            },
+            {
+            "title":"理財文章列表",
+            "type":"postback",
+            "payload":"*pf"
+            },
+            {
+            "title":"100 點抽寶箱",
+            "type":"postback",
+            "payload":"*box"
+            },
+            {
+            "title":"連抽 20 寶箱",
+            "type":"postback",
+            "payload":"*box20"
+            }
+        ]
+        },
+        {
+        "type":"web_url",
+        "title":"專頁首頁",
+        "url":"https://www.facebook.com/iatstock",
+        "webview_height_ratio":"full"
+        }
+    ]
+    }
+]
+}' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=PAT"
+
+@app.route('/webhook', methods=['POST'])
+
+curl -X POST -H "Content-Type: application/json" -d '{
+"persistent_menu":[
+    {
+    "locale":"default",
+    "composer_input_disabled":false,
+    "call_to_actions":[
+        {
+        "title":"Features",
+        "type":"nested",
+        "call_to_actions":[
+            {
+            "title":"All Commands",
+            "type":"postback",
+            "payload":"*help"
+            },
+            {
+            "title":"Check Points",
+            "type":"postback",
+            "payload":"*daily"
+            },
+            {
+            "title":"Personal Finance Articles",
+            "type":"postback",
+            "payload":"*pf"
+            },
+            {
+            "title":"Lotto",
+            "type":"postback",
+            "payload":"*bq"
+            }
+        ]
+        },
+        {
+        "type":"web_url",
+        "title":"Facebook Page",
+        "url":"https://www.facebook.com/iatstock",
+        "webview_height_ratio":"full"
+        }
+    ]
+    },
+    {
+    "locale":"zh_TW",
+    "composer_input_disabled":false,
+    "call_to_actions":[
+        {
+        "title":"快捷功能按鈕",
+        "type":"nested",
+        "call_to_actions":[
+            {
+            "title":"功能列表",
+            "type":"postback",
+            "payload":"*help"
+            },
+            {
+            "title":"查點數與登入獎勵",
+            "type":"postback",
+            "payload":"*daily"
+            },
+            {
+            "title":"理財文章列表",
+            "type":"postback",
+            "payload":"*pf"
+            },
+            {
+            "title":"抽寶箱",
+            "type":"postback",
+            "payload":"*bq"
+            }
+        ]
+        },
+        {
+        "type":"web_url",
+        "title":"專頁首頁",
+        "url":"https://www.facebook.com/iatstock",
+        "webview_height_ratio":"full"
+        }
+    ]
+    }
+]
+}' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=PAT"
+
+curl -X POST -H "Content-Type: application/json" -d '{
+"persistent_menu":[
+    {
+    "locale":"default",
+    "composer_input_disabled":false,
+    "call_to_actions":[
+        {
+        "title":"Features",
+        "type":"nested",
+        "call_to_actions":[
+            {
+            "title":"All Commands",
+            "type":"postback",
+            "payload":"*help"
+            },
+            {
+            "title":"Check Points",
+            "type":"postback",
+            "payload":"*daily"
+            },
+            {
+            "title":"Personal Finance Articles",
+            "type":"postback",
+            "payload":"*pf"
+            },
+            {
+            "title":"Lotto",
+            "type":"postback",
+            "payload":"*bq"
+            },
+            {
+            "title":"Stock Info",
+            "type":"postback",
+            "payload":"*si"
+            }
+        ]
+        },
+        {
+        "type":"web_url",
+        "title":"Facebook Page",
+        "url":"https://www.facebook.com/iatstock",
+        "webview_height_ratio":"full"
+        }
+    ]
+    },
+    {
+    "locale":"zh_TW",
+    "composer_input_disabled":false,
+    "call_to_actions":[
+        {
+        "title":"快捷功能按鈕",
+        "type":"nested",
+        "call_to_actions":[
+            {
+            "title":"功能列表",
+            "type":"postback",
+            "payload":"*help"
+            },
+            {
+            "title":"查點數與登入獎勵",
+            "type":"postback",
+            "payload":"*daily"
+            },
+            {
+            "title":"理財文章列表",
+            "type":"postback",
+            "payload":"*pf"
+            },
+            {
+            "title":"抽寶箱",
+            "type":"postback",
+            "payload":"*bq"
+            },
+            {
+            "title":"股票資訊",
+            "type":"postback",
+            "payload":"*si"
+            }
+        ]
+        },
+        {
+        "type":"web_url",
+        "title":"專頁首頁",
+        "url":"https://www.facebook.com/iatstock",
+        "webview_height_ratio":"full"
+        }
+    ]
+    }
+]
+}' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=PAT"
+
+curl -X POST -H "Content-Type: application/json" -d '{
+"persistent_menu":[
+    {
+    "locale":"default",
+    "composer_input_disabled":false,
+    "call_to_actions":[
+        {
+        "title":"Features",
+        "type":"nested",
+        "call_to_actions":[
+            {
+            "title":"Stock Info",
+            "type":"postback",
+            "payload":"*si"
+            },
+            {
+            "title":"Other",
+            "type":"postback",
+            "payload":"*fc"
+            },
+            {
+            "title":"How to use",
+            "type":"postback",
+            "payload":"*help"
+            }
+        ]
+        },
+        {
+        "type":"web_url",
+        "title":"Facebook Page",
+        "url":"https://www.facebook.com/iatstock",
+        "webview_height_ratio":"full"
+        }
+    ]
+    },
+    {
+    "locale":"zh_TW",
+    "composer_input_disabled":false,
+    "call_to_actions":[
+        {
+        "title":"功能按鈕",
+        "type":"nested",
+        "call_to_actions":[
+            {
+            "title":"個股分析",
+            "type":"postback",
+            "payload":"*si"
+            },
+            {
+            "title":"其他功能",
+            "type":"postback",
+            "payload":"*fc"
+            },
+            {
+            "title":"系統操作說明",
+            "type":"postback",
+            "payload":"*help"
+            }
+        ]
+        },
+        {
+        "type":"web_url",
+        "title":"專頁首頁",
+        "url":"https://www.facebook.com/iatstock",
+        "webview_height_ratio":"full"
+        }
+    ]
+    }
+]
+}' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=PAT"
