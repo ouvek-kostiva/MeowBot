@@ -7,3 +7,7 @@
 #### 申請使用 Facebook API 可以到 [申請教學](http://ouvek.com/2017/12/04/facebook-bot-api.html) 閱讀申請方法
 
 #### 如果只是想使用看看可以到 [喵醬看市場](https://www.facebook.com/meowmarkets/) 專頁直接傳送訊息使用
+
+#### PAT 要記得改成自己的 FB Access Token
+
+#### 執行只需要用 python3 rec.py 就可以執行
